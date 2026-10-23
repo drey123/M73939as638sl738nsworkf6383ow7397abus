@@ -1,0 +1,19 @@
+name: placeholder
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Why this run was outsourced from a private agent VM"
+        required: false
+        default: "capacity"
+
+jobs:
+  note:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acknowledge
+        run: |
+          echo "Public Actions runner for MassLens."
+          echo "Reason: ${{ inputs.reason }}"
+          echo "Write results back to private WORKLOG.md."
